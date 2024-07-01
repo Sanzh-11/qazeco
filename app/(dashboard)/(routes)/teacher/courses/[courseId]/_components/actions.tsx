@@ -44,7 +44,7 @@ export const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
       router.refresh();
       router.push(`/teacher/courses`);
     } catch {
-      toast.error("Что-то полшло не так");
+      toast.error("Заполните все поля");
     } finally {
       setIsLoading(false);
     }
@@ -58,7 +58,7 @@ export const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
         variant="outline"
         size="sm"
       >
-        {isPublished ? "Unpublish" : "Publish"}
+        {isPublished ? "Отменить публикацию" : "Опубликовать"}
       </Button>
       <ConfirmModal onConfirm={onDelete}>
         <Button size="sm" disabled={isLoading}>

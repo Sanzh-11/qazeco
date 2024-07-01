@@ -60,7 +60,7 @@ export const AttachmentForm = ({
       <div className="font-medium flex items-center justify-between">
         Доп. ресурсы
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing && <>Cancel</>}
+          {isEditing && <>Отмена</>}
           {!isEditing && (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />

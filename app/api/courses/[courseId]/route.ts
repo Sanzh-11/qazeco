@@ -26,7 +26,13 @@ export async function DELETE(
     if (!course) {
       return new NextResponse("Unauthorized", { status: 404 });
     }
-    // TODO: finish course deletion
+
+    const deletedCourse = await db.course.delete({
+      where: {
+        id: params.courseId,
+      },
+    });
+    return NextResponse.json(deletedCourse);
   } catch (error) {
     console.log("[COURSE_ID_DELETE]", error);
     return new NextResponse("Internal Error", { status: 500 });

@@ -1,11 +1,31 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
 }
+
+enum MemberRole {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+model Profile {
+  id String @id @default(uuid()) 
+  userId String @unique 
+  name String 
+  imageUrl String? 
+  email String 
+
+  role MemberRole @default(STUDENT) 
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
+}
+
 
 model Course {
   id          String     @id @default(uuid()) @map("id")
@@ -20,6 +40,7 @@ model Course {
 
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+
 }
 
 model Attachment {

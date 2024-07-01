@@ -43,9 +43,9 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
   const requiredFields = [
     course.title,
-    course.description,
     course.imageUrl,
     course.chapters.some((chapter) => chapter.isPublished),
+    course.attachments,
   ];
 
   const totalFields = requiredFields.length;
@@ -65,7 +65,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium">Создание курса</h1>
             <span className="text-sm text-slate-700">
-              Заполните все поля {completionText}
+              Заполнено полей {completionText}
             </span>
           </div>
           <Actions
@@ -95,7 +95,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={File} />
-                <h2 className="text-xl">Ресуры и вложения</h2>
+                <h2 className="text-xl">Задания и домашка</h2>
               </div>
               <AttachmentForm initialData={course} courseId={course.id} />
             </div>

@@ -10,18 +10,13 @@ const guestRoutes = [
     label: "Мои курсы",
     href: "/",
   },
-  {
-    icon: Compass,
-    label: "Все курсы",
-    href: "/search",
-  },
 ];
 
 const teacherRoutes = [
   {
     icon: List,
     label: "Все курсы",
-    href: "teacher/courses",
+    href: "/teacher/courses",
   },
 ];
 
