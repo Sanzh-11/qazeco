@@ -1,13 +1,12 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { File } from "lucide-react";
+import { File, ArrowLeftToLine } from "lucide-react";
+import Link from "next/link";
 
 import { getChapter } from "@/actions/get-chapter";
 import { Banner } from "@/components/banner";
 import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/preview";
-
-import { Viewer } from "@react-pdf-viewer/core";
 import { CourseProgressButton } from "./_components/course-progress-button";
 
 const ChapterIdPage = async ({
@@ -32,7 +31,7 @@ const ChapterIdPage = async ({
     return redirect("/");
   }
 
-  // const pdfUrl = chapter.textUrl || "";
+  const pdfUrl = chapter.textUrl || "";
 
   return (
     <div>
@@ -40,14 +39,15 @@ const ChapterIdPage = async ({
         <Banner variant="success" label="You already completed this chapter." />
       )}
       <div className="flex flex-col max-w-4xl mx-auto pb-20">
-        <div
-          style={{
-            border: "1px solid rgba(0, 0, 0, 0.3)",
-            height: "750px",
-          }}
-        >
-          {/* <Viewer fileUrl={pdfUrl} /> */}
-          PDF file
+        <div className="p-4 mt-10">
+          <a
+            href={pdfUrl}
+            target="_blank"
+            className="flex items-center p-3 w-full bg-emerald-200 dark:bg-emerald-800 text-emerald-700 dark:text-emerald-300 hover:underline"
+          >
+            <File />
+            <p className="line-clamp-1">{`${chapter.title}_material`}</p>
+          </a>
         </div>
         <div>
           <div className="p-4 flex flex-col md:flex-row items-center justify-between">
@@ -62,6 +62,13 @@ const ChapterIdPage = async ({
           <Separator />
           <div>
             <Preview value={chapter.description!} />
+          </div>
+          <div className="p-4 mt-20">
+            <p className="text-2xl font-semibold">Below are course exercises</p>
+            <p className="text-sm text-gray-500 mb-4">
+              Feel free to complete them at any time you want
+            </p>
+            <div className="flex items-center space-x-2 mt-4"></div>
           </div>
           {!!attachments.length && (
             <>

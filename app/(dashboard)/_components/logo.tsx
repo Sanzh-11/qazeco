@@ -5,7 +5,7 @@ export const Logo = () => {
   return (
     <>
       <Link href="/">
-        <Image src="/logo.svg" alt="Logo" width={130} height={130} />
+        <Image src="/logo1.svg" alt="Logo" width={50} height={40} />
       </Link>
     </>
   );

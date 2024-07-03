@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { CourseProgress } from "@/components/course-progress";
 
 import { CourseSidebarItem } from "./course-sidebar.item";
+import Link from "next/link";
+import { ArrowLeftToLine } from "lucide-react";
 
 interface CourseSidebarProps {
   course: Course & {
@@ -34,6 +36,13 @@ export const CourseSidebar = async ({
         </div>
       </div>
       <div className="flex flex-col w-full">
+        <Link
+          href="/"
+          className="flex items-center p-3 text-slate-700 dark:text-slate-300"
+        >
+          <ArrowLeftToLine className="w-6 h-6 mr-2" />
+          Начальная страница
+        </Link>
         {course.chapters.map((chapter) => (
           <CourseSidebarItem
             key={chapter.id}

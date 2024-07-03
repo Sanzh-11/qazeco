@@ -8,8 +8,9 @@ export const Sidebar = () => {
     <div
       className={`h-full border-r flex flex-col overflow-y-auto bg-white text-gray-900 shadow-sm dark:bg-gray-900 dark:text-white`}
     >
-      <div className="p-6">
+      <div className="p-6 flex items-center justify-between">
         <Logo />
+        <span className="text-md font-semibold">Qazeconomics</span>
       </div>
       <div className="flex flex-col w-full">
         <SidebarRoutes />
